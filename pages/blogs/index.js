@@ -119,9 +119,15 @@ export default function blogs() {
                   Welcome to <span>Pramuja Blogs!</span>
                 </h1>
                 <p data-aos="fade-right">
-                  I Write about web, mobile development and modern JavaScript
-                  frameworks. The best articles, links and news related to web
-                  and mobile development
+                  Welcome to my blog, a space where I document and share
+                  everything I've learned about web and Frontend, Backend and
+                  Fullstack Development. Here, you'll find articles, tutorials,
+                  and insights on modern JavaScript frameworks and development
+                  practices. I write to solidify my knowledge and provide
+                  valuable resources for fellow developers. Whether you're
+                  looking for the latest news, helpful links, or detailed
+                  guides, this blog is your go-to destination for all things web
+                  and Stack for web development.
                 </p>
                 <div className="subemail" data-aos="fade-up">
                   <form className="flex">
@@ -288,18 +294,7 @@ export default function blogs() {
                                 {blog.title}
                               </Link>
                             </h3>
-                            <p>
-                              Lorem ipsum dolor sit amet, consectetur adipiscing
-                              elit. Sed do eiusmod tempor incididunt ut labore
-                              et dolore magna aliqua. Ut enim ad minim veniam,
-                              quis nostrud exercitation ullamco laboris nisi ut
-                              aliquip ex ea commodo consequat. Duis aute irure
-                              dolor in reprehenderit in voluptate velit esse
-                              cillum dolore eu fugiat nulla pariatur. Excepteur
-                              sint occaecat cupidatat non proident, sunt in
-                              culpa qui officia deserunt mollit anim id est
-                              laborum.
-                            </p>
+                            <p>{blog.shortDescription}</p>
                             <h4 className="flex">
                               <img src="/img/ppwira3.png" alt="" />
                               <span>by Pramuja</span>
