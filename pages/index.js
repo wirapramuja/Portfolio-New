@@ -194,7 +194,7 @@ export default function Home() {
                   href="/img/wira-resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  download="wira-resume.pdf"
+                  download="wira-resume-frontend.pdf"
                   className="download_cv"
                 >
                   Download CV
@@ -210,11 +210,6 @@ export default function Home() {
                       <FaTwitter />
                     </a>
                   </li>
-                  {/* <li>
-                    <a href="/">
-                      <LiaBasketballBallSolid />
-                    </a>
-                  </li> */}
                   <li>
                     <a
                       href="https://www.linkedin.com/in/wirapramuja/"

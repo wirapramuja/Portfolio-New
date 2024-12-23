@@ -34,28 +34,35 @@ export default function Footer() {
 
           <ul className="hero_social">
             <li>
-              <a href="/" target="_blank">
+              <a
+                href="https://x.com/wirapramuja44"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaTwitter />
               </a>
             </li>
             <li>
-              <a href="/" target="_blank">
-                <LiaBasketballBallSolid />
-              </a>
-            </li>
-            <li>
-              <a href="/" target="_blank">
+              <a
+                href="https://www.linkedin.com/in/wirapramuja/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <GrLinkedinOption />
               </a>
             </li>
             <li>
-              <a href="/" target="_blank">
+              <a
+                href="https://github.com/wirapramuja"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaGithub />
               </a>
             </li>
           </ul>
-          <div className='copyrights'>
-                &copy; 2024 All Rights Reserved By <span>Pramuja</span>
+          <div className="copyrights">
+            &copy; 2024 All Rights Reserved By <span>Pramuja</span>
           </div>
         </div>
       </footer>
