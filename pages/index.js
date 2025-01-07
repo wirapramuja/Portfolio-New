@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { BiDownload } from 'react-icons/bi';
 import { FaCalendarDays, FaGithub, FaTwitter } from 'react-icons/fa6';
 import { GrLinkedinOption } from 'react-icons/gr';
-import { LiaBabyCarriageSolid, LiaBasketballBallSolid } from 'react-icons/lia';
+
 import { GoArrowUpRight } from 'react-icons/go';
 import { useEffect, useRef, useState } from 'react';
 import Spinner from '@/components/Spinner';
@@ -19,7 +19,7 @@ export default function Home() {
 
   useEffect(() => {
     const typed = new Typed(typedRef.current, {
-      strings: ['Frontend Dev', 'Backend Dev', 'Fullstack Dev', 'UX Designer'], // Teks yang akan ditampilkan
+      strings: ['Frontend Dev', 'Fullstack Dev', 'UX Designer', '3D Website / Game Dev'], // Teks yang akan ditampilkan
       typeSpeed: 50, // Kecepatan mengetik (ms)
       backSpeed: 30, // Kecepatan menghapus (ms)
       loop: true // Aktifkan loop
@@ -45,6 +45,11 @@ export default function Home() {
       description:
         'I specialize in crafting responsive and interactive web applications using modern frameworks like React.js and Next.js. My skills include transforming Figma designs into functional and visually appealing websites, ensuring cross-browser compatibility and excellent user experiences.'
     },
+     {
+      title: '3D Game/Web Development',
+      description:
+        'I create immersive 3D games and web experiences using Three.js, React Three Fiber, Cannon.js, and Rappier. My expertise includes developing physics-based interactions, dynamic visuals, and responsive 3D environments that engage users.'
+    },
     {
       title: 'UI/UX Design',
       description:
@@ -59,7 +64,8 @@ export default function Home() {
       title: 'Full-Stack Development',
       description:
         'As a full-stack developer, I can handle both front-end and back-end development seamlessly. My skills allow me to create complete web solutions, from designing intuitive interfaces to building robust server-side functionalities.'
-    }
+    },
+    
   ];
 
   const [loading, setLoading] = useState(true);
@@ -139,7 +145,9 @@ export default function Home() {
     { src: '/img/nodejs.svg', alt: 'Node JS', name: 'Node JS' },
     { src: '/img/express.svg', alt: 'Express', name: 'Express' },
     { src: '/img/prisma.svg', alt: 'Prisma', name: 'Prisma ORM' },
-    { src: '/img/redux.svg', alt: 'Redux', name: 'Redux' }
+    { src: '/img/redux.svg', alt: 'Redux', name: 'Redux' },
+    { src: '/img/vite.svg', alt: 'vite', name: 'vite' },
+    { src: '/img/threejs.png', alt: 'threejs', name: 'threejs' }
   ];
 
   
@@ -342,6 +350,12 @@ export default function Home() {
               All
             </button>
             <button
+              className={selectedCategory === '3D Web/Game' ? 'active' : ''}
+              onClick={() => setSelectedCategory('3D Web/Game')}
+            >
+              3D Web / Game
+            </button>
+            <button
               className={
                 selectedCategory === 'Frontend Development' ? 'active' : ''
               }
@@ -363,6 +377,7 @@ export default function Home() {
             >
               UI/UX Design
             </button>
+            
           </div>
           <div className="projects_cards">
             {loading ? (
@@ -404,6 +419,14 @@ export default function Home() {
               <h2>My Experience</h2>
             </div>
             <div className="exper_cards">
+              <div className="exper_card" data-aos="fade-up">
+                <span>Oct 2024 - Dec 2024</span>
+                <h3>Fullstack Developer | Rajawali Cipta Berkah onsite Bandung</h3>
+                <hr className="mt-1" />
+                <p className="mt-1">
+                  Helped develop an admin system for managing inventory, including adding, storing, and inputting data. Enhanced website performance to ensure smooth user interaction and optimized backend processes for efficient data handling.
+                </p>
+              </div>
               <div className="exper_card" data-aos="fade-up">
                 <span>2022 - 2024</span>
                 <h3>Freelance Web Developer | Fiverr</h3>

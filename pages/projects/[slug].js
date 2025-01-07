@@ -148,7 +148,7 @@ export default function projectslug() {
 
             <div className="projectsluginfo">
               <div className="leftmainproinfo">
-                <h1>{alldata && alldata[0]?.projectcategory.join(', ')}</h1>
+                <h1>{alldata && alldata[0]?.title}</h1>
                 <p>{alldata && alldata[0]?.shortDescription}</p>
                 <a target="_blank" href={alldata && alldata[0]?.livepreview}>
                   Live Preview

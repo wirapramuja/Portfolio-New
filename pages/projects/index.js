@@ -58,6 +58,14 @@ export default function projects() {
                 </button>
                 <button
                   className={
+                    selectedCategory === '3D Web/Game' ? 'active' : ''
+                  }
+                  onClick={() => setSelectedCategory('3D Web/Game')}
+                >
+                  3D Web / Game
+                </button>
+                <button
+                  className={
                     selectedCategory === 'Frontend Development' ? 'active' : ''
                   }
                   onClick={() => setSelectedCategory('Frontend Development')}
