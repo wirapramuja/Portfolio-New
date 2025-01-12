@@ -66,8 +66,15 @@ export default function Header() {
 
   useEffect(() => {
     //update active link state when the page is reloaded
-    setActiveLink(router.pathname);
-  }, [router.pathname]);
+    setActiveLink(router.asPath);
+  }, [router.asPath]);
+
+  const isActive = (link) => {
+    if (link === '/shop') {
+      return router.asPath.startsWith('/shop')
+    }
+    return router.asPath === link
+  }
 
   //mobile navbar
   const [mobile, setMobile] = useState(false);
@@ -98,7 +105,7 @@ export default function Header() {
                 <Link
                   href={'/'}
                   onClick={() => handleLinkClick('/')}
-                  className={activeLink === '/' ? 'active' : ''}
+                  className={isActive('/') ? 'active' : ''}
                 >
                   Home
                 </Link>
@@ -106,7 +113,7 @@ export default function Header() {
               <li>
                 <Link
                   onClick={() => handleLinkClick('/blogs')}
-                  className={activeLink === '/blogs' ? 'active' : ''}
+                  className={activeLink.includes('/blogs') ? 'active' : ''}
                   href={'/blogs'}
                 >
                   Blogs
@@ -115,7 +122,7 @@ export default function Header() {
               <li>
                 <Link
                   onClick={() => handleLinkClick('/gallery')}
-                  className={activeLink === '/gallery' ? 'active' : ''}
+                  className={isActive('/gallery') ? 'active' : ''}
                   href={'/gallery'}
                 >
                   Gallery
@@ -124,7 +131,7 @@ export default function Header() {
               <li>
                 <Link
                   onClick={() => handleLinkClick('/services')}
-                  className={activeLink === '/services' ? 'active' : ''}
+                  className={isActive('/services') ? 'active' : ''}
                   href={'/services'}
                 >
                   Services
@@ -133,7 +140,7 @@ export default function Header() {
               <li>
                 <Link
                   onClick={() => handleLinkClick('/projects')}
-                  className={activeLink === '/projects' ? 'active' : ''}
+                  className={activeLink.includes('/projects') ? 'active' : ''}
                   href={'/projects'}
                 >
                   Projects
@@ -142,7 +149,7 @@ export default function Header() {
               <li>
                 <Link
                   onClick={() => handleLinkClick('/shop')}
-                  className={activeLink === '/shop' ? 'active' : ''}
+                  className={isActive('/shop') ? 'active' : ''}
                   href={'/shop'}
                 >
                   Shop
@@ -151,7 +158,7 @@ export default function Header() {
               <li>
                 <Link
                   onClick={() => handleLinkClick('/contact')}
-                  className={activeLink === '/contact' ? 'active' : ''}
+                  className={isActive('/contact') ? 'active' : ''}
                   href={'/contact'}
                 >
                   Contact
@@ -188,7 +195,7 @@ export default function Header() {
                 <Link
                   href={'/'}
                   onClick={() => handleLinkClick('/')}
-                  className={activeLink === '/' ? 'active' : ''}
+                  className={isActive('/') ? 'active' : ''}
                 >
                   Home
                 </Link>
@@ -196,7 +203,7 @@ export default function Header() {
               <li>
                 <Link
                   onClick={() => handleLinkClick('/blogs')}
-                  className={activeLink === '/blogs' ? 'active' : ''}
+                  className={isActive('/blogs') ? 'active' : ''}
                   href={'/blogs'}
                 >
                   Blogs
@@ -205,7 +212,7 @@ export default function Header() {
               <li>
                 <Link
                   onClick={() => handleLinkClick('/gallery')}
-                  className={activeLink === '/gallery' ? 'active' : ''}
+                  className={isActive('/gallery') ? 'active' : ''}
                   href={'/gallery'}
                 >
                   Gallery
@@ -214,7 +221,7 @@ export default function Header() {
               <li>
                 <Link
                   onClick={() => handleLinkClick('/services')}
-                  className={activeLink === '/services' ? 'active' : ''}
+                  className={isActive('/services') ? 'active' : ''}
                   href={'/services'}
                 >
                   Services
@@ -223,7 +230,7 @@ export default function Header() {
               <li>
                 <Link
                   onClick={() => handleLinkClick('/projects')}
-                  className={activeLink === '/projects' ? 'active' : ''}
+                  className={isActive('/projects') ? 'active' : ''}
                   href={'/projects'}
                 >
                   Projects
@@ -232,7 +239,7 @@ export default function Header() {
               <li>
                 <Link
                   onClick={() => handleLinkClick('/shop')}
-                  className={activeLink === '/shop' ? 'active' : ''}
+                  className={isActive('/shop') ? 'active' : ''}
                   href={'/shop'}
                 >
                   Shop
@@ -241,7 +248,7 @@ export default function Header() {
               <li>
                 <Link
                   onClick={() => handleLinkClick('/contact')}
-                  className={activeLink === '/contact' ? 'active' : ''}
+                  className={isActive('/contact') ? 'active' : ''}
                   href={'/contact'}
                 >
                   Contact

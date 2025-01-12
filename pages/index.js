@@ -11,6 +11,12 @@ import { LuMedal } from 'react-icons/lu';
 import { PiGraduationCap } from 'react-icons/pi';
 import { CiCircleMinus } from 'react-icons/ci';
 import Typed from 'typed.js';
+import Image from 'next/image';
+import { experiences } from '@/constants/Experience';
+import { education } from '@/constants/Education';
+import { skills } from '@/constants/Skills';
+import { funFacts } from '@/constants/FunFact';
+import { services } from '@/constants/Services';
 
 export default function Home() {
   const typedRef = useRef(null);
@@ -19,7 +25,12 @@ export default function Home() {
 
   useEffect(() => {
     const typed = new Typed(typedRef.current, {
-      strings: ['Frontend Dev', 'Fullstack Dev', 'UX Designer', '3D Website / Game Dev'], // Teks yang akan ditampilkan
+      strings: [
+        'Frontend Dev',
+        'Fullstack Dev',
+        'UX Designer',
+        '3D Web / Game Dev'
+      ], // Teks yang akan ditampilkan
       typeSpeed: 50, // Kecepatan mengetik (ms)
       backSpeed: 30, // Kecepatan menghapus (ms)
       loop: true // Aktifkan loop
@@ -38,36 +49,6 @@ export default function Home() {
     setActiveIndex(0); //set the first iem as active when mouse leaves
   };
 
-  // services data
-  const services = [
-    {
-      title: 'Web Development',
-      description:
-        'I specialize in crafting responsive and interactive web applications using modern frameworks like React.js and Next.js. My skills include transforming Figma designs into functional and visually appealing websites, ensuring cross-browser compatibility and excellent user experiences.'
-    },
-     {
-      title: '3D Game/Web Development',
-      description:
-        'I create immersive 3D games and web experiences using Three.js, React Three Fiber, Cannon.js, and Rappier. My expertise includes developing physics-based interactions, dynamic visuals, and responsive 3D environments that engage users.'
-    },
-    {
-      title: 'UI/UX Design',
-      description:
-        'With a strong background in UI/UX design, I create intuitive and aesthetically pleasing interfaces. My designs prioritize user experience and accessibility, ensuring that your web projects not only look great but are also easy to use.'
-    },
-    {
-      title: 'Backend Development',
-      description:
-        'I have experience working with backend technologies like Node.js, Express, and Prisma ORM, enabling me to build secure and scalable APIs. My expertise includes integrating databases like MongoDB and PostgreSQL to ensure efficient data handling'
-    },
-    {
-      title: 'Full-Stack Development',
-      description:
-        'As a full-stack developer, I can handle both front-end and back-end development seamlessly. My skills allow me to create complete web solutions, from designing intuitive interfaces to building robust server-side functionalities.'
-    },
-    
-  ];
-
   const [loading, setLoading] = useState(true);
   const [alldata, setAlldata] = useState([]);
   const [allwork, setAllwork] = useState([]);
@@ -85,10 +66,10 @@ export default function Home() {
         ]);
 
         const projectData = await projectResponse.json();
-        const blogsData = await blogsResponse.json()
+        const blogsData = await blogsResponse.json();
 
         setAlldata(projectData);
-        setAllwork(blogsData)
+        setAllwork(blogsData);
       } catch (error) {
         console.log('Error Fetching Data', error);
       } finally {
@@ -114,13 +95,11 @@ export default function Home() {
     }
   }, [selectedCategory, alldata]);
 
-  
-
   //function to format the date as '2- may 2024'
   const formatDate = (date) => {
     //check if date is valid
-    if(!date || isNaN(date)) {
-      return "" //or handle the error as needed
+    if (!date || isNaN(date)) {
+      return ''; //or handle the error as needed
     }
 
     const options = {
@@ -128,27 +107,10 @@ export default function Home() {
       month: 'long',
       year: 'numeric',
       hour12: true // use 12 hour format
-    }
+    };
 
-    return new Intl.DateTimeFormat('en-US', options).format(date)
-  }
-
-  const skills = [
-    { src: '/img/react.svg', alt: 'React', name: 'React' },
-    { src: '/img/nextjs.svg', alt: 'Next Js', name: 'Next Js' },
-    { src: '/img/tailwind.svg', alt: 'Tailwind CSS', name: 'Tailwind CSS' },
-    { src: '/img/javascript.svg', alt: 'Javascript', name: 'Javascript' },
-    { src: '/img/typescript.svg', alt: 'Typescript', name: 'Typescript' },
-    { src: '/img/html.svg', alt: 'HTML', name: 'HTML' },
-    { src: '/img/css.svg', alt: 'CSS', name: 'CSS' },
-    { src: '/img/mongodb.svg', alt: 'MongoDB', name: 'MongoDB' },
-    { src: '/img/nodejs.svg', alt: 'Node JS', name: 'Node JS' },
-    { src: '/img/express.svg', alt: 'Express', name: 'Express' },
-    { src: '/img/prisma.svg', alt: 'Prisma', name: 'Prisma ORM' },
-    { src: '/img/redux.svg', alt: 'Redux', name: 'Redux' },
-    { src: '/img/vite.svg', alt: 'vite', name: 'vite' },
-    { src: '/img/threejs.png', alt: 'threejs', name: 'threejs' }
-  ];
+    return new Intl.DateTimeFormat('en-US', options).format(date);
+  };
 
   
 
@@ -260,34 +222,19 @@ export default function Home() {
           </div>
 
           <div className="funfect_area flex flex-sb">
-            <div className="funfect_item" data-aos="fade-right">
-              <h3>2+</h3>
-              <h4>
-                Year of <br />
-                Experience
-              </h4>
-            </div>
-            <div className="funfect_item" data-aos="fade-right">
-              <h3>10+</h3>
-              <h4>
-                Projects <br />
-                Completed
-              </h4>
-            </div>
-            <div className="funfect_item" data-aos="fade-left">
-              <h3>0</h3>
-              <h4>
-                OpenSource <br />
-                Library
-              </h4>
-            </div>
-            <div className="funfect_item" data-aos="fade-left">
-              <h3>5+</h3>
-              <h4>
-                Happy <br />
-                Customers
-              </h4>
-            </div>
+            {funFacts.map((fact) => (
+              <div
+                key={fact.id}
+                className="funfect_item"
+                data-aos={fact.aos}
+              >
+                <h3>{fact.value}</h3>
+                <h4>
+                  {fact.title} <br />
+                  {fact.subtitle}
+                </h4>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -305,9 +252,8 @@ export default function Home() {
           <div className="services_menu" data-aos="fade-up">
             {services.map((service, index) => (
               <div
-                className={`services_item ${
-                  activeIndex === index ? 'sactive' : ''
-                }`}
+                className={`services_item ${activeIndex === index ? 'sactive' : ''
+                  }`}
                 onMouseOver={() => handleHover(index)}
                 key={index}
                 onMouseOut={handleMouseOut}
@@ -377,7 +323,6 @@ export default function Home() {
             >
               UI/UX Design
             </button>
-            
           </div>
           <div className="projects_cards">
             {loading ? (
@@ -397,7 +342,7 @@ export default function Home() {
                   data-aos-duration="2000"
                 >
                   <div className="proimgbox">
-                    <img src={pro.images[0]} alt={pro.title} />
+                    <Image priority={false} className='proimgbox-img' width={800} height={800} src={pro.images[0]} alt={pro.title} />
                   </div>
                   <div className="procontentbox">
                     <h2>{pro.title}</h2>
@@ -419,43 +364,18 @@ export default function Home() {
               <h2>My Experience</h2>
             </div>
             <div className="exper_cards">
-              <div className="exper_card" data-aos="fade-up">
-                <span>Oct 2024 - Dec 2024</span>
-                <h3>Fullstack Developer | Rajawali Cipta Berkah onsite Bandung</h3>
-                <hr className="mt-1" />
-                <p className="mt-1">
-                  Helped develop an admin system for managing inventory, including adding, storing, and inputting data. Enhanced website performance to ensure smooth user interaction and optimized backend processes for efficient data handling.
-                </p>
-              </div>
-              <div className="exper_card" data-aos="fade-up">
-                <span>2022 - 2024</span>
-                <h3>Freelance Web Developer | Fiverr</h3>
-                <hr className="mt-1" />
-                <p className="mt-1">
-                  Frontend Developer | UI Designer | Turn Figma to Code |
-                  Redesign Website | Website SEO Optimization
-                </p>
-              </div>
-              <div className="exper_card" data-aos="fade-up">
-                <span>2019 - 2024</span>
-                <h3>Freelance Graphic Designer | Fiverr</h3>
-                <hr className="mt-1" />
-                <p className="mt-1">
-                  Logo Design | UI Design | Landing Page Design | Vector
-                  Illustration | Banner Design | Poster Design
-                </p>
-              </div>
-              <div className="exper_card" data-aos="fade-up">
-                <span>June, 2018 - Aug, 2018</span>
-                <h3>(Internship) Perpustakan & Arsip Indramayu</h3>
-                <hr className="mt-1" />
-                <p className="mt-1">Relevant Skill:</p>
-                <p className="">
-                  Data organization and management | Collaboration and
-                  problem-solving | Administrative software usage | Digital
-                  process optimization
-                </p>
-              </div>
+              {experiences.map((exp, index) => (
+                <div className="exper_card" data-aos="fade-up" key={index}>
+                  <span>{exp.date}</span>
+                  <h3>{exp.title}</h3>
+                  <hr className="mt-1" />
+                  {exp.description.map((desc, i) => (
+                    <p className="mt-1" key={i}>
+                      {desc}
+                    </p>
+                  ))}
+                </div>
+              ))}
             </div>
           </div>
 
@@ -465,40 +385,19 @@ export default function Home() {
               <h2>My Education</h2>
             </div>
             <div className="exper_cards">
-              <div className="exper_card" data-aos="fade-up">
-                <span>2020 - Present</span>
-                <h3>Universitas Wiralodra</h3>
-                <p>Faculty of Economics (currently on Academic leave)</p>
+              {education.map((edu, index) => (
+                <div className="exper_card" data-aos="fade-up" key={index}>
+                  <span>{edu.date}</span>
+                  <h3>{edu.title}</h3>
+                  <p>{edu.subtitle}</p>
                 <hr className="mt-1" />
-                <p className="mt-1">
-                  Actively pursuing professional development through self-study
-                  in front-end development (Next.js, TypeScript, React.js,
-                  Tailwind CSS).
-                </p>
-                <p className="mt-1">
-                  {' '}
-                  Freelancing in web development and UI/UX design to gain
-                  practical industry experience.
-                </p>
+                  {edu.description.map((desc, i) => (
+                    <p className="mt-1" key={i}>
+                      {desc}
+                    </p>
+                  ))}
               </div>
-              <div className="exper_card" data-aos="fade-up">
-                <span>2016 - 2019</span>
-                <h3>Vocational High School | SMK IBS TQ</h3>
-                <p>Computer Network and Engineering</p>
-                <hr className="mt-1" />
-                <p className="mt-1">
-                  Gained foundational knowledge in networking, computer systems,
-                  and IT infrastructure.
-                </p>
-                <p className="mt-1">
-                  Developed problem-solving skills by configuring and
-                  troubleshooting network systems.
-                </p>
-                <p className="mt-1">
-                  Acquired basic programming skills, which served as a stepping
-                  stone to further learning in web development.
-                </p>
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -522,7 +421,13 @@ export default function Home() {
                 data-aos={index % 6 < 3 ? 'fade-right' : 'fade-left'}
               >
                 <div className="mys_inner">
-                  <img src={skill.src} alt={skill.alt} />
+                  <Image
+                    width={80}
+                    height={80}
+                    src={skill.src}
+                    alt={skill.alt}
+                    className="skills-image"
+                  />
                   <h3>{skill.name}</h3>
                 </div>
               </div>

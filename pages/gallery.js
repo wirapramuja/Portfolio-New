@@ -1,6 +1,7 @@
 import Spinner from '@/components/Spinner';
 import useFetchData from '@/hooks/useFetchData';
 import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function gallery() {
@@ -26,24 +27,33 @@ export default function gallery() {
                 </Link>
               </div>
               <div className="rightimgsec">
-                <img
+                <Image
                   src="/img/jordan.png"
-                  alt=""
+                  alt="Jordan"
+                  width={350}
+                  height={450}
+                  className="main-img"
                   data-aos="flip-left"
                   data-aos-easing="ease-out-cubic"
                   data-aos-duration="2000"
                 />
                 <div className="r_img_top">
-                  <img
+                  <Image
                     src="/img/kobe.png"
-                    alt=""
+                    alt="Kobe"
+                    width={420}
+                    height={225}
+                    className="top-img"
                     data-aos="flip-left"
                     data-aos-easing="ease-out-cubic"
                     data-aos-duration="2000"
                   />
-                  <img
+                  <Image
                     src="/img/lebron.png"
-                    alt=""
+                    alt="Lebron"
+                    width={300}
+                    height={225}
+                    className="top-img second"
                     data-aos="flip-left"
                     data-aos-easing="ease-out-cubic"
                     data-aos-duration="2000"
@@ -68,7 +78,7 @@ export default function gallery() {
             </div>
             <div className="gallery_image_grid">
               {loading ? (
-                <Spinner></Spinner>
+                <Spinner />
               ) : (
                 <>
                   {alldata.map((photo) => {
@@ -79,7 +89,13 @@ export default function gallery() {
                         data-aos-easing="ease-out-cubic"
                         data-aos-duration="2000"
                       >
-                        <img src={photo.images[0]} alt="" />
+                        <Image
+                          src={photo.images[0]}
+                          alt={photo.title || "Gallery Image"}
+                          width={500} // Sesuaikan ukuran
+                          height={300} // Sesuaikan ukuran
+                          className="gallery-img"
+                        />
                         <div className="galeryimgiteminfo">
                           <h2>{photo.title}</h2>
                           <p>by Wira Pramuja</p>

@@ -1,6 +1,7 @@
 import Spinner from "@/components/Spinner";
 import useFetchData from "@/hooks/useFetchData";
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { GoArrowUpRight } from "react-icons/go";
@@ -108,7 +109,7 @@ export default function projects() {
                       data-aos-duration="2000"
                     >
                       <div className="proimgbox">
-                        <img src={pro.images[0]} alt={pro.title} />
+                        <Image priority={false} className='proimgbox-img' width={800} height={800} src={pro.images[0]} alt={pro.title} />
                       </div>
                       <div className="procontentbox">
                         <h2>{pro.title}</h2>
