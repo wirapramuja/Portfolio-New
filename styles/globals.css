@@ -5066,7 +5066,7 @@ header.sticky {
 
 }
 
-@media screen and (max-width: 410px) {
+@media screen and (max-width: 510px) {
     .hero_img_box {
         width: 315px;
         height: 365px;
@@ -5078,6 +5078,7 @@ header.sticky {
 
     .logo h2 {
         font-size: 13px;
+        display: none;
     }
 
     .copyrights {
