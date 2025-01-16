@@ -13,7 +13,7 @@ export default function gallery() {
 
   const openModal = (image, index) => {
     setCurrentImage(image);
-    setCurrentIndex(index);
+    setCurrentIndex(0);
     setIsModalOpen(true);
   };
 
