@@ -2607,6 +2607,7 @@ header.sticky {
   border-radius: 15px;
   max-width: 100%;
   object-fit: contain;
+  cursor: pointer;
   
 }
 
